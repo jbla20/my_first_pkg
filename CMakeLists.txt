@@ -134,6 +134,8 @@ include_directories(
 add_executable(roundround src/roundround.cpp)
 add_executable(print_pose src/print_pose.cpp)
 add_executable(get_close src/get_close.cpp)
+add_executable(hello src/other/hello.cpp)
+add_executable(distance_2points src/other/distance_2points.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -158,6 +160,14 @@ target_link_libraries(get_close
   ${catkin_LIBRARIES}
 )
 
+target_link_libraries(hello
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(distance_2points
+  ${catkin_LIBRARIES}
+)
+
 #############
 ## Install ##
 #############
@@ -174,7 +184,7 @@ target_link_libraries(get_close
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
-install(TARGETS roundround print_pose get_close
+install(TARGETS roundround print_pose get_close hello distance_2points
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
