@@ -1,0 +1,14 @@
+<launch>
+    <arg name="foo" default="1" />
+    
+    <group if="$(arg foo)" >
+    <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch" /> <!-- if foo=true, initiate roundround in gazebo -->
+    </group>
+    
+    <group unless="$(arg foo)" > 
+    <include file="$(find turtlebot_bringup)/launch/minimal.launch" /> <!-- if foo=false, initiate roundround on turtlebot -->
+    </group>
+
+    <remap from="/turtle1/cmd_vel" to="/cmd_vel_mux/input/teleop" />  
+    <node name="roundround" pkg="my_first_pkg" type="roundround" />
+</launch>
